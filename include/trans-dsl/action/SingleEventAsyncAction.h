@@ -31,10 +31,11 @@ private:
 
 protected:
     auto addHandler(EventId eventId, details::NormalFunction handler) -> Status;
-    auto addHandler(EventId eventId, details::MemberFunction handler) -> Status;
+//    auto addHandler(EventId eventId, details::MemberFunction handler) -> Status;
 
 protected:
-    std::variant<std::monostate, details::MemberFunction, details::NormalFunction> handler;
+//    std::variant<std::monostate, details::MemberFunction, details::NormalFunction> handler;
+    details::NormalFunction handler = nullptr;
     EventId eventId{INVALID_EVENT_ID};
 
 protected:
@@ -44,12 +45,12 @@ protected:
             M&& handler
     ) -> Status
     {
-        if constexpr (MsgHandlerTrait<M>::IsNormalFunction) {
+//        if constexpr (MsgHandlerTrait<M>::IsNormalFunction) {
             return addHandler(eventId, handler);
-        } else {
-            static_assert(sizeof(M) == 1);
-            return addHandler(eventId, extractP2MF(&M::operator()));
-        }
+//        } else {
+//            static_assert(sizeof(M) == 1);
+//            return addHandler(eventId, extractP2MF(&M::operator()));
+//        }
     }
 };
 

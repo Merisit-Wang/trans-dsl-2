@@ -12,7 +12,7 @@ TSL_NS_BEGIN
 
 namespace detail {
    template<typename T>
-   constexpr bool Is_Non_Final_Class = std::is_class_v<T> && !std::is_final_v<T>;
+   constexpr bool Is_Non_Final_Class = std::is_class<T>::value && !std::is_final_v<T>;
 
    template<typename K, typename V,
       bool = Is_Non_Final_Class<V>,
@@ -25,7 +25,7 @@ namespace detail {
       constexpr explicit ebo(V const &v) : V{v} {}
       constexpr ebo(ebo const &rhs) = default;
 
-      template<typename T, typename = std::enable_if_t<!std::is_same_v<V, T>>>
+      template<typename T, typename = std::enable_if_t<!std::is_same<V, T>::value>>
       constexpr ebo(T const &rhs) : V{rhs} {}
    };
 
@@ -34,7 +34,7 @@ namespace detail {
       constexpr ebo() = default;
       constexpr explicit ebo(V const &v) : data_{v} {}
       constexpr ebo(ebo const &rhs) = default;
-      template<typename T, typename = std::enable_if_t<!std::is_same_v<V, T>>>
+      template<typename T, typename = std::enable_if_t<!std::is_same<V, T>::value>>
       constexpr ebo(T const &rhs) : data_{static_cast<T const &>(rhs)} {}
 
       V data_;

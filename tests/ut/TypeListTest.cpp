@@ -25,7 +25,7 @@ namespace {
    };
 
    TEST_CASE("pipe-line") {
-      REQUIRE(std::is_same_v<Result<Tag<int, 1>, Tag<double, 2>, Tag<short, 3>>, PipeLineTest1<int, double, short>::type>);
+      REQUIRE(std::is_same<Result<Tag<int, 1>, Tag<double, 2>, Tag<short, 3>>, PipeLineTest1<int, double, short>::type>::value);
       //using type = __TL_Pipeline(__infinite_list(long, 1), Drop<5>, Take<5>, Elem<0>); //__TL_OutputTo(Result);
    }
 }

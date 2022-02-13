@@ -66,7 +66,7 @@ private:
 public:
    template<typename ... Ys>
    constexpr auto operator==(tuple<Ys...> const& rhs) const noexcept {
-      if constexpr (std::is_same_v<tuple<Xs...>, tuple<Ys...>>) {
+      if constexpr (std::is_same<tuple<Xs...>, tuple<Ys...>>::value) {
          return tuple_equals(std::index_sequence_for<Xs...>{}, rhs);
       } else {
          return false_c;
@@ -121,7 +121,7 @@ namespace detail {
 
 template<typename ... Xs, typename ... Ys>
 constexpr auto matches(tuple<Xs...> const& lhs, tuple<Ys...> const& rhs) noexcept {
-   if constexpr (std::is_same_v<tuple<Xs...>, tuple<Ys...>>) {
+   if constexpr (std::is_same<tuple<Xs...>, tuple<Ys...>>::value) {
       return detail::tuple_matches(std::index_sequence_for<Xs...>{}, lhs, rhs);
    } else {
       return false;

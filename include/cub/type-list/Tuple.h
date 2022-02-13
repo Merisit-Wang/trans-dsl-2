@@ -15,7 +15,7 @@ CUB_NS_BEGIN
 class Pair final {
 
    template<typename T>
-   constexpr static bool IsValue = std::is_base_of_v<ValueWrapperSignature, T>;
+   constexpr static bool IsValue = std::is_base_of<ValueWrapperSignature, T>::value;
 
 public:
    template<typename T, auto V>

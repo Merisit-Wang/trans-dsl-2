@@ -22,7 +22,7 @@ template<typename T, typename = void>
 struct ValueTrait;
 
 template<typename T>
-struct ValueTrait<T, std::enable_if_t<std::is_base_of_v<ValueWrapperSignature, T>>> {
+struct ValueTrait<T, std::enable_if_t<std::is_base_of<ValueWrapperSignature, T>::value>> {
    constexpr static auto value = T::value;
 };
 
@@ -33,7 +33,7 @@ struct ListWrapper : TypeListSignature {
 };
 
 template<typename LIST>
-struct ListWrapper<LIST, std::enable_if_t<std::is_base_of_v<ValueListSignature, LIST>>> : TypeListSignature {
+struct ListWrapper<LIST, std::enable_if_t<std::is_base_of<ValueListSignature, LIST>::value>> : TypeListSignature {
    using Head = V<LIST::Head>;
    using Tail = ListWrapper<typename LIST::Tail>;
 };

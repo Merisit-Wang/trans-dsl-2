@@ -28,7 +28,7 @@ template<typename T, typename = void>
 struct MsgHandlerTrait : MsgHandlerTrait__<T> {};
 
 template<typename T>
-struct MsgHandlerTrait<T, std::enable_if_t<std::is_class_v<T>>> : MsgHandlerTrait__<decltype(&T::operator())> {};
+struct MsgHandlerTrait<T, std::enable_if_t<std::is_class<T>::value>> : MsgHandlerTrait__<decltype(&T::operator())> {};
 
 TSL_NS_END
 

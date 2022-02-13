@@ -66,7 +66,7 @@ namespace details {
    };
 
    template<typename T>
-   struct FinalThreadCreator<T, std::enable_if_t<std::is_void_v<ThreadCreator_t<T>>>> {
+   struct FinalThreadCreator<T, std::enable_if_t<std::is_void<ThreadCreator_t<T>>::value>> {
       static constexpr uint8_t numOfThreads = 0;
       static constexpr ThreadId threadId = 0; // main thread id
       auto createThreadAction(ThreadId) -> SchedAction* {

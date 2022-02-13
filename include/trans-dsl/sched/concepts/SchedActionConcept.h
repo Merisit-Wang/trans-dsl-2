@@ -16,7 +16,7 @@
 TSL_NS_BEGIN
 
 template<typename T>
-DEF_CONCEPT(SchedActionConcept, std::is_base_of_v<SchedAction, T>);
+DEF_CONCEPT(SchedActionConcept, std::is_base_of<SchedAction, T>::value);
 
 TSL_NS_END
 

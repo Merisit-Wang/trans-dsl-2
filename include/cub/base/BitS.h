@@ -11,7 +11,7 @@
 
 CUB_NS_BEGIN
 
-template<typename T, typename = std::enable_if<std::is_integral_v<T>>>
+template<typename T, typename = std::enable_if<std::is_integral<T>::value>>
 struct BitS {
 public:
    constexpr BitS(T value = 0) : value{value} {}

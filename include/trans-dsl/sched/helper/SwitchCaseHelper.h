@@ -15,7 +15,7 @@ TSL_NS_BEGIN
 namespace details {
 
    template<typename T>
-   DEF_CONCEPT(ActionPathConcept, std::is_base_of_v<ActionPath, T>);
+   DEF_CONCEPT(ActionPathConcept, std::is_base_of<ActionPath, T>::value);
 
    // 24 bytes
    template<typename ... T_PATHS>

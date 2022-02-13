@@ -37,7 +37,7 @@ namespace details {
          destroy();
          if constexpr(N < sizeof...(Ts)) {
             using Elem = CUB_NS::Elem_t<N, Ts...>;
-            CONCEPT_ASSERT(std::is_base_of_v<T_ELEM, Elem>);
+            CONCEPT_ASSERT(std::is_base_of<T_ELEM, Elem>::value);
             present = true;
             return new (cache) Elem;
          } else {

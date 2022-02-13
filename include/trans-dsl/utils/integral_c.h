@@ -36,7 +36,7 @@ template<typename T>
 constexpr auto Is_Integral_Const_V = Is_Integral_Const<T>::value();
 
 template<typename T>
-constexpr auto Is_True_V = std::is_same_v<true_type, T>;
+constexpr auto Is_True_V = std::is_same<true_type, T>::value;
 
 template<typename T>
 constexpr bool is_integral_const(T const&) {

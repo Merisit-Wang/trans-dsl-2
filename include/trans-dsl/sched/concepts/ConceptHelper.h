@@ -46,7 +46,7 @@ namespace details {
 template<typename C, typename T>
 constexpr static bool IsTypeClass = details::AlwaysTrue<decltype(C::template deduceType<T>)>;
 
-#define __METHOD(result, ...) static_assert(std::is_same_v<result, decltype(__VA_ARGS__)>)
+#define __METHOD(result, ...) static_assert(std::is_same<result, decltype(__VA_ARGS__)>::value)
 #define __DEF_TYPE_CLASS(...) static decltype(auto) deduceType(__VA_ARGS__)
 
 #endif

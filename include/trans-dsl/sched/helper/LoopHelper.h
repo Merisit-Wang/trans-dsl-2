@@ -54,7 +54,7 @@ namespace details {
    };
 
    template<typename T>
-   DEF_CONCEPT(LoopPredConcept, std::is_base_of_v<LoopPredSignature, T>);
+   DEF_CONCEPT(LoopPredConcept, std::is_base_of<LoopPredSignature, T>::value);
 
    template<typename T>
    DEF_CONCEPT(StatefulLoopPredConcept, LoopPredConcept<T> && (sizeof(T) > 1));

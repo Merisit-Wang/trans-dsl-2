@@ -27,7 +27,7 @@ class FlattenSeq final {
    };
 
    template<typename ACC, typename T>
-   struct Seq_<ACC, T, std::enable_if_t < std::is_base_of_v < CUB_NS::FlattenableSignature, T>>> {
+   struct Seq_<ACC, T, std::enable_if_t < std::is_base_of< CUB_NS::FlattenableSignature, T>::value>> {
       using type = typename T::template __Secrete_OutputAllTypesTo<ACC::template type>;
    };
 

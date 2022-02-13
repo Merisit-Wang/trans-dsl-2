@@ -152,7 +152,7 @@ class TypeStream final {
    };
 
    template<typename T>
-   struct TypeListTrait<T, std::enable_if_t<std::is_base_of_v<TypeListSignature, T>>> {
+   struct TypeListTrait<T, std::enable_if_t<std::is_base_of<TypeListSignature, T>::value>> {
       using type = T;
    };
 

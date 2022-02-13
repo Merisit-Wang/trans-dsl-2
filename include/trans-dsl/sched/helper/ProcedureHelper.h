@@ -24,7 +24,7 @@ namespace details {
    };
 
    template<typename T>
-   DEF_CONCEPT(FinallyConcept, std::is_base_of_v<FinallySignature, T>);
+   DEF_CONCEPT(FinallyConcept, std::is_base_of<FinallySignature, T>::value);
 
    template<typename ... Tss>
    struct FinalTrait;

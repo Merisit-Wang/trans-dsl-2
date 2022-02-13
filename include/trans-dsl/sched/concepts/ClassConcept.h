@@ -16,7 +16,7 @@
 TSL_NS_BEGIN
 
 template<typename T>
-DEF_CONCEPT(ClassConcept, std::is_class_v<T>);
+DEF_CONCEPT(ClassConcept, std::is_class<T>::value);
 
 TSL_NS_END
 

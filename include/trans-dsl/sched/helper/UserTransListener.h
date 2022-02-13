@@ -13,7 +13,7 @@
 
 TSL_NS_BEGIN
 
-#define ChEcK(...) std::enable_if_t<std::is_void_v<decltype(__VA_ARGS__)>>
+#define ChEcK(...) std::enable_if_t<std::is_void<decltype(__VA_ARGS__)>::value>
 #define VaL(T) std::declval<T>()
 
 namespace details {
